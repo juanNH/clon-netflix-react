@@ -63,6 +63,24 @@ const tmdb =  {
                 items: await basicFetch(`/discover/movie?with_genderes=99?language=es-ES&api_key=${API_KEY}`)
             },
         ];
+    },
+    getMovieInfo: async (movieId, type) => {
+        let info = {}
+        if(movieId) {
+            switch(type) {
+                case 'movie':
+                    info = await basicFetch(`/movie/${movieId}?language=es-ES&api_key=${API_KEY}`);
+                break;
+                case 'tv':
+                    info = await basicFetch(`/tv/${movieId}?language=es-ES&api_key=${API_KEY}`);
+                break;
+                defaul: 
+                    info =null;
+                break;
+            }
+        }
+ 
+        return info
     }
 }
 
