@@ -8,8 +8,8 @@ import Header from './components/header/Header';
 const App = () => {
 
   const [movieList, setMovieList] = useState([]);
-
   const [featureData, setFeatureData] = useState([null]);
+  const [blackHeader, setBlackHeader] = useState(false);
 
 useEffect(() => {
   const loadAll = async () =>{
@@ -28,10 +28,25 @@ useEffect(() => {
   loadAll();
 }, []);
 
+useEffect(()=>{
+  const scrolllistener = () =>{
+    if(window.scrollY > 20) {
+      setBlackHeader(true)
+    } else {
+      setBlackHeader(false)
+    }
+  }
+
+  window.addEventListener('scroll',scrolllistener);
+  return () => {
+    window.removeEventListener('scroll',scrolllistener);
+  }
+},[])
+
   return (
     <div className="page">
       
-      <Header  />
+      <Header black={blackHeader} />
 
       {featureData && 
         <FeatureMovie item={featureData}  />
@@ -42,6 +57,7 @@ useEffect(() => {
           <MovieRow key={key} title={item.title} items={item.items} />
         ))}
       </section>
+      
     </div>
   )
 }
