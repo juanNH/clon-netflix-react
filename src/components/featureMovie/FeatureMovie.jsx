@@ -3,6 +3,12 @@ import './FeatureMovie.css'
 
 
 const FeatureMovie = ({item})=> {
+    let firstDate = new Date(item.first_air_date);
+    let genres = [];
+
+    for (let i in item.genres){
+        genres.push(item.genres[i].name)
+    }
     return (
         <section className="featured" style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original${item.backdrop_path})`
@@ -19,10 +25,20 @@ const FeatureMovie = ({item})=> {
                         Calificacion: {item.vote_average}
                     </div>
                     <div className="featured--year">
-                        404
+                        {firstDate.getFullYear()}
                     </div>
                     <div className="featured--seasons">
-                        Temporadas: {item.number_of_seasons}
+                        Temporada{item.number_of_seasons !== 1 ? 's' : ''}: {item.number_of_seasons}
+                    </div>
+                    <div className="featured--description">
+                        {item.overview}
+                    </div>
+                    <div className="featured--buttons">
+                        <a href={`/watch/${item.id}`}>► Mirar</a>
+                        <a href={`/list/add/${item.id}`}>+ Agregar a mi lista</a>
+                    </div>
+                    <div className="featured--genres">
+                        <strong>Generos: {genres.join(', ')}</strong>
                     </div>
                 </div>
             </div>
