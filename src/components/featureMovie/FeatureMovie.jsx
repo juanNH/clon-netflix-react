@@ -34,8 +34,8 @@ const FeatureMovie = ({item})=> {
                         {item.overview}
                     </div>
                     <div className="featured--buttons">
-                        <a href={`/watch/${item.id}`}>► Mirar</a>
-                        <a href={`/list/add/${item.id}`}>+ Agregar a mi lista</a>
+                        <a href={`/watch/${item.id}`} className="featured--watchbutton">► Mirar</a>
+                        <a href={`/list/add/${item.id}`}  className="featured--mylistbutton">+ Agregar a mi lista</a>
                     </div>
                     <div className="featured--genres">
                         <strong>Generos: {genres.join(', ')}</strong>
