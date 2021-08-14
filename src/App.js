@@ -3,6 +3,8 @@ import tmdb from './tmdb';
 import MovieRow from './components/movieRow/MovieRow';
 import './App.css'
 import FeatureMovie from './components/featureMovie/FeatureMovie';
+import Header from './components/header/Header';
+
 const App = () => {
 
   const [movieList, setMovieList] = useState([]);
@@ -29,6 +31,8 @@ useEffect(() => {
   return (
     <div className="page">
       
+      <Header  />
+
       {featureData && 
         <FeatureMovie item={featureData}  />
       }
