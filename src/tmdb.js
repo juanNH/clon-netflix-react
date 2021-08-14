@@ -19,9 +19,9 @@ const basicFetch = async (endpoint) => {
 }
 
 
-export default {
+const tmdb =  {
     getHomeList: async () => {
-        return[
+        return [
             {
                 slug:'originals',
                 title:'Originales de netflix',
@@ -62,6 +62,9 @@ export default {
                 title:'Documentales',
                 items: await basicFetch(`/discover/movie?with_genderes=99?language=es-ES&api_key=${API_KEY}`)
             },
-        ]
+        ];
     }
 }
+
+export default tmdb
+
