@@ -9,6 +9,16 @@ const FeatureMovie = ({item})=> {
     for (let i in item.genres){
         genres.push(item.genres[i].name)
     }
+
+    let description = ''
+    if (item.overview) {
+        description = item.overview;
+        if(description.length > 200){
+            description = description.substring(0, 200)+'...'
+        }
+    }
+
+
     return (
         <section className="featured" style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original${item.backdrop_path})`
@@ -19,19 +29,18 @@ const FeatureMovie = ({item})=> {
                         {item.original_name}
                     </div>
                     <div className="featured--info">
-
-                    </div>
-                    <div className="featured--points">
-                        Calificacion: {item.vote_average}
-                    </div>
-                    <div className="featured--year">
-                        {firstDate.getFullYear()}
-                    </div>
-                    <div className="featured--seasons">
-                        Temporada{item.number_of_seasons !== 1 ? 's' : ''}: {item.number_of_seasons}
+                        <div className="featured--points">
+                            Calificacion: {item.vote_average}
+                        </div>
+                        <div className="featured--year">
+                            {firstDate.getFullYear()}
+                        </div>
+                        <div className="featured--seasons">
+                            Temporada{item.number_of_seasons !== 1 ? 's' : ''}: {item.number_of_seasons}
+                        </div>
                     </div>
                     <div className="featured--description">
-                        {item.overview}
+                        {description}
                     </div>
                     <div className="featured--buttons">
                         <a href={`/watch/${item.id}`} className="featured--watchbutton">► Mirar</a>
