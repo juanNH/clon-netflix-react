@@ -4,6 +4,7 @@ import MovieRow from './components/movieRow/MovieRow';
 import './App.css'
 import FeatureMovie from './components/featureMovie/FeatureMovie';
 import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 
 const App = () => {
 
@@ -58,6 +59,8 @@ useEffect(()=>{
         ))}
       </section>
       
+      <Footer  />
+
     </div>
   )
 }
