@@ -5,6 +5,8 @@ import './App.css'
 import FeatureMovie from './components/featureMovie/FeatureMovie';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import Loading from './components/loading/Loading';
+
 
 const App = () => {
 
@@ -60,7 +62,10 @@ useEffect(()=>{
       </section>
       
       <Footer  />
-
+          {movieList.length <= 0 &&
+            <Loading  />
+          }
+   
     </div>
   )
 }
